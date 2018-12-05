@@ -6,7 +6,7 @@ from channels.auth import AuthMiddlewareStack
 
 from MyAPI.consumers import StreamConsumer
 from backend.token_auth import TokenAuthMiddlewareStack
-
+from backend.jwttoken_auth import JwtTokenAuthMiddlewareStack
 # The channel routing defines what connections get handled by what consumers,
 # selecting on either the connection type (ProtocolTypeRouter) or properties
 # of the connection's scope (like URLRouter, which looks at scope["path"])
@@ -22,7 +22,7 @@ application = ProtocolTypeRouter({
     # this is a custom handler to handle a basic auth token from websocket 
     # for authentication
     
-        "websocket": TokenAuthMiddlewareStack(
+        "websocket": JwtTokenAuthMiddlewareStack(
         URLRouter([
             # URLRouter just takes standard Django path() or url() entries.
             path("myapi/stream/", StreamConsumer),
