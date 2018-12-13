@@ -14,7 +14,7 @@ from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.utils import timezone
 from .models import StreamChannel
-
+import random
 def index(request):
     # Render that in the index template
     return render(request, "index.html")
@@ -31,5 +31,5 @@ class TestData(views.APIView):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def get(self, request, *args, **kwargs):        
-        d = {'Message': 'This is a protected get'}
+        d = {'Message': 'This is a protected get' + str(random.randint(0,100))}
         return JsonResponse(d, status=status.HTTP_201_CREATED, safe=False)
