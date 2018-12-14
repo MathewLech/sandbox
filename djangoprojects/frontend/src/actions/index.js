@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR, FETCH_TESTDATA } from 'actions/types';
 
 
 export const signin = (formProps, callback) => async dispatch => {
-    try {
+    try {      
       const response = await axios.post(
         'http://localhost:8000/api/auth/token/obtain/',
         formProps
@@ -76,7 +76,15 @@ export const signin = (formProps, callback) => async dispatch => {
             history.push('/signout');
       };
     }
-  
+
+    export const signout = () => {
+      localStorage.removeItem('token');
+    
+      return {
+        type: AUTH_USER,
+        payload: ''
+      };
+    };
 
 
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link  } from 'react-router-dom';
 import testingprotected from 'components/testingprotected'
-import Signin from 'components/auth/Signin';
+import AppBar from 'components/AppBar'
+
+
 class App extends Component {
   
   
@@ -12,9 +14,6 @@ class App extends Component {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/signin">signin</Link>
-        </li>
-        <li>
           <Link to="/feature">feature</Link>
         </li>
       </ul>
@@ -22,14 +21,17 @@ class App extends Component {
   }
 
   render() {
-    return (      
+    return (                  
       <div className="App">
+        <Route   path="" component={AppBar}   />
         {this.renderHeader()}      
-        <Route path="/signin" component={Signin} />
         <Route path="/feature" component={testingprotected} />  
       </div>
+      
     );
   }
 }
+
+
 
 export default App;

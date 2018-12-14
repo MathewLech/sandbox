@@ -7,8 +7,6 @@ import Root from 'Root';
 import store from 'Store'
 import { AUTH_USER } from 'actions/types'
 
-
-
 const token = localStorage.getItem('token');
 // If we have a token, consider the user to be signed in
 if (token) {
@@ -17,12 +15,13 @@ if (token) {
 }
 
 
+
 ReactDOM.render(
-    <Root>
-      <BrowserRouter>
-        <Route path="/" component={App} />
-      </BrowserRouter>
-    </Root>,
+      <Root>
+        <BrowserRouter>        
+          <Route path="/" component={App} />
+        </BrowserRouter>
+      </Root>,
     document.getElementById('root')
   );
 
