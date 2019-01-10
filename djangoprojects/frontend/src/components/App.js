@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link  } from 'react-router-dom';
 import testingprotected from 'components/testingprotected'
 import AppBar from 'components/AppBar'
-
-
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import theme from 'theme';
 class App extends Component {
   
   
@@ -21,12 +21,14 @@ class App extends Component {
   }
 
   render() {
-    return (                  
-      <div className="App">
+    return (               
+      <MuiThemeProvider theme={theme}>
+      <div className="App">      
         <Route   path="" component={AppBar}   />
         {this.renderHeader()}      
         <Route path="/feature" component={testingprotected} />  
       </div>
+      </MuiThemeProvider>   
       
     );
   }
